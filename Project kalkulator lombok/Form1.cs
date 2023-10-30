@@ -13,6 +13,7 @@ namespace Project_kalkulator_lombok
     public partial class Kalkulator : Form
     {
         double value = 0;
+        double a;
         string ops = "";
         bool op_pressed = false;
         public Kalkulator()
@@ -76,12 +77,16 @@ namespace Project_kalkulator_lombok
 
         private void op_click(object sender, EventArgs e)
         {
+           
             Button b = (Button)sender;
             ops = b.Text;
+            
             op_pressed = true;
             value = Double.Parse(Hasil.Text);
 
             op_pressed = true;
+
+            Hasil.Clear();
         }
     }
 }
