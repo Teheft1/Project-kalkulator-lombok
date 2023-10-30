@@ -13,7 +13,7 @@ namespace Project_kalkulator_lombok
     public partial class Kalkulator : Form
     {
         double value = 0;
-        double a;
+        string a;
         string ops = "";
         bool op_pressed = false;
         public Kalkulator()
@@ -33,7 +33,7 @@ namespace Project_kalkulator_lombok
 
         private void btn_click(object sender, EventArgs e)
         {
-            if (Hasil.Text == "0" || op_pressed)
+            if (Hasil.Text == "0")
                 Hasil.Clear();
 
             op_pressed = false;
@@ -58,7 +58,13 @@ namespace Project_kalkulator_lombok
 
         private void btn_equal_Click(object sender, EventArgs e)
         {
-            switch (ops)
+            a = Hasil.Text;
+            DataTable dt = new DataTable();
+            var v = dt.Compute(a, "");
+
+            Hasil.Text = v.ToString();
+            
+            /*switch (ops)
             {
                 case "+": Hasil.Text = (value + Double.Parse(Hasil.Text)).ToString();
                     op_pressed = false;
@@ -72,7 +78,7 @@ namespace Project_kalkulator_lombok
                 case "/": Hasil.Text = (value / Double.Parse(Hasil.Text)).ToString();
                     op_pressed = false;
                     break;
-            }
+            }*/
         }
 
         private void op_click(object sender, EventArgs e)
@@ -82,11 +88,10 @@ namespace Project_kalkulator_lombok
             ops = b.Text;
             
             op_pressed = true;
-            value = Double.Parse(Hasil.Text);
+            /*value = Double.Parse(Hasil.Text);*/
+            Hasil.Text = Hasil.Text + ops;
 
             op_pressed = true;
-
-            Hasil.Clear();
         }
     }
 }
