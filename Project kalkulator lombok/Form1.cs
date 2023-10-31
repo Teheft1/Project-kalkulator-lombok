@@ -93,5 +93,10 @@ namespace Project_kalkulator_lombok
 
             op_pressed = true;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
